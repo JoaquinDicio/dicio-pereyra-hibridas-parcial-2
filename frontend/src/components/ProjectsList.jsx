@@ -8,6 +8,7 @@ export default function ProjectsList({ projects, loading, errors }) {
         {projects?.map((project) => (
           <ProjectCard
             key={project._id}
+            img_url={project.img_url}
             projectID={project._id}
             name={project.name}
             description={project.description}
