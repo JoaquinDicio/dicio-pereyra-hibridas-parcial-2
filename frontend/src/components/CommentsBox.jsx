@@ -18,6 +18,8 @@ export default function CommentsBox({ comments: initalComments }) {
   async function handleSubmit(e, content) {
     e.preventDefault();
 
+    if (content.trim() == "") return;
+
     const response = await axiosPost(
       `http://localhost:8080/api/projects/${projectID}/comments`,
       { comment: { content: content } }

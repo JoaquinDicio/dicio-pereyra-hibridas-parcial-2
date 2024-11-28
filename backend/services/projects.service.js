@@ -12,7 +12,7 @@ const projectsService = {
 
     // verificacion de los errores y campos vacios
     required.forEach((key) => {
-      if (!project[key]) {
+      if (!project[key] || project[key]?.trim() == "") {
         errors[key] = `El campo es obligatorio`; // si el campo requrido esta vacio lo agrega a errors
       }
     });
