@@ -110,7 +110,7 @@ const projectsService = {
     const errors = {};
 
     required.forEach((key) => {
-      if (!newData[key]) {
+      if (!newData[key] || newData[key]?.trim() == "") {
         errors[key] = `El campo es obligatorio`;
       }
     });
