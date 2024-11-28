@@ -12,7 +12,7 @@ export default function NewProject() {
       project: projectDetails,
     });
 
-    if (response.status == 200) {
+    if (response?.status == 200) {
       navigate("/admin-projects");
     }
   }

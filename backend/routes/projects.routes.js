@@ -40,6 +40,7 @@ projectsRouter.get(
 // CONTRIBUIDORES DE LOS PROYECTOS
 projectsRouter.post(
   "/projects/:projectID/contributors",
+  verifyToken,
   contributorsController.addContributor
 );
 

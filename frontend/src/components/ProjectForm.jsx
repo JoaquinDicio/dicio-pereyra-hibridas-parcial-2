@@ -1,5 +1,5 @@
 import CategorySelector from "./CategorySelector";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProjectForm({
   handleSubmit,
@@ -85,6 +85,8 @@ export default function ProjectForm({
           setCategory={handleChange}
           selectedCategory={projectDetails.category}
         />
+
+        <i className="text-red-500 text-sm">{errors?.category}</i>
 
         <input
           value="Guardar"

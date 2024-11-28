@@ -7,7 +7,7 @@ const projectsService = {
     const { project } = req.body;
     const userId = req.user._doc._id; // esto viene gracias al token
 
-    const required = ["name", "description", "repo", "img_url"];
+    const required = ["name", "description", "category", "repo", "img_url"];
     const errors = {};
 
     // verificacion de los errores y campos vacios
@@ -106,8 +106,10 @@ const projectsService = {
   async updateProject(req) {
     const { projectID } = req.params;
     const { newData } = req.body; //debe llegar la data envuelta en un objeto newData
-    const required = ["name", "description", "repo", "img_url"];
+    const required = ["name", "description", "category", "repo", "img_url"];
     const errors = {};
+
+    console.log(newData);
 
     required.forEach((key) => {
       if (!newData[key] || newData[key]?.trim() == "") {

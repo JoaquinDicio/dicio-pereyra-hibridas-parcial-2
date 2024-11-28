@@ -15,16 +15,20 @@ export default function EditProject() {
       const response = await axiosGet(
         `http://localhost:8080/api/projects/${projectID}`
       );
-      if (response.status == 200) setProjectDetails(response.project);
+      if (response.status == 200) {
+        const { project } = response;
+        setProjectDetails({ ...project, category: project.category._id });
+      }
     }
     fetchProjectDetails();
   }, [projectID]);
 
-  async function handleSubmit(e, projectDetails) {
+  async function handleSubmit(e, project) {
     e.preventDefault();
+
     const response = await axiosPut(
       `http://localhost:8080/api/projects/${projectID}`,
-      { newData: projectDetails }
+      { newData: { ...project } }
     );
 
     if (response?.status == 200) {
