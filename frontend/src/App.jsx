@@ -10,6 +10,7 @@ import AdminProjects from "./pages/AdminProjects";
 import EditProject from "./pages/EditProjects";
 import Contributors from "./pages/Contributors";
 import Project from "./pages/Project.jsx";
+import EditProfile from "./pages/EditProfile.jsx";
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
               <Route
                 path="/projects/:projectID"
                 element={<PrivateRoute Page={Project} />}
+              />
+              <Route
+                path="/profile/edit"
+                element={<PrivateRoute Page={EditProfile} />}
               />
             </>
           </Routes>
