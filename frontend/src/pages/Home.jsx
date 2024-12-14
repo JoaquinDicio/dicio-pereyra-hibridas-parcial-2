@@ -2,9 +2,12 @@ import ProjectsList from "../components/ProjectsList";
 import CategorySelector from "../components/CategorySelector.jsx";
 import useAxios from "../hooks/useAxios.jsx";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export default function Home() {
   const [projects, setProjects] = useState([]);
+  const [searchParams] = useSearchParams();
+  let type = searchParams.get("type");
   const [filteredProjects, setFilteredProjects] = useState([]);
   const { axiosGet, loading, errors } = useAxios();
 
@@ -16,6 +19,10 @@ export default function Home() {
     }
     getProjects();
   }, []);
+
+  useEffect(() => {
+    console.log(type);
+  }, [type]);
 
   function handleCategoryChange(target) {
     const selected = target.value;
