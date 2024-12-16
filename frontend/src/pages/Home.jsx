@@ -21,8 +21,16 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log(type);
-  }, [type]);
+    //filtra si hay una categoria seleccionada en la url
+    if (type) {
+      const result = projects.filter(
+        (project) => project.category?._id == type
+      );
+      setFilteredProjects(result);
+    } else {
+      setFilteredProjects(projects);
+    }
+  }, [projects, type]);
 
   function handleCategoryChange(target) {
     const selected = target.value;
@@ -43,7 +51,7 @@ export default function Home() {
       <div className="py-5">
         <h2 className="text-xl font-medium">Proyectos</h2>
         <div className="pt-5">
-          <CategorySelector setCategory={handleCategoryChange} />
+          {!type && <CategorySelector setCategory={handleCategoryChange} />}
         </div>
         <ProjectsList
           projects={filteredProjects}

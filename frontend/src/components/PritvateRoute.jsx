@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext.jsx"; // Asegúrate de usar tu contexto
+import PrivateHeader from "./PrivateHeader.jsx";
 
 const PrivateRoute = ({ Page }) => {
   const { isAuthenticated, user, logout } = useContext(AuthContext);
@@ -17,15 +18,7 @@ const PrivateRoute = ({ Page }) => {
   if (isAuthenticated)
     return (
       <>
-        <header className="fixed top-0 bg-slate-200 flex justify-between px-5 py-3 w-full">
-          <Link to={"/"}>ProjectHub</Link>
-          <div className="flex gap-3">
-            <Link to={`/profile/${user._id}`}>{user?.username}</Link>
-            <button onClick={logout} className="text-red-500 text-sm">
-              Cerrar sesion
-            </button>
-          </div>
-        </header>
+        <PrivateHeader />
         <Page />
       </>
     );
