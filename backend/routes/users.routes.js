@@ -10,4 +10,6 @@ usersRouter.get("/users/:userId", usersController.getUserData); // se usa el mid
 
 usersRouter.put("/users/:userId", verifyToken, usersController.updateUserData); // se usa el middleware para que traiga la informacion del usuario del token
 
+usersRouter.get("/users/:userId/tasks", usersController.getTasksByUser);
+
 export default usersRouter;

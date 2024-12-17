@@ -6,6 +6,7 @@ import projectsRouter from "./routes/projects.routes.js";
 import usersRouter from "./routes/users.routes.js";
 import connectDB from "./db.js";
 import categoriesRouter from "./routes/categories.routes.js";
+import tasksRouter from "./routes/tasks.routes.js";
 
 const app = express();
 
@@ -25,5 +26,7 @@ app.use("/api/", projectsRouter);
 app.use("/api/", usersRouter);
 
 app.use("/api/", categoriesRouter);
+
+app.use("/api/", tasksRouter);
 
 app.listen(8080, () => console.log("Server running at :", process.env.PORT));

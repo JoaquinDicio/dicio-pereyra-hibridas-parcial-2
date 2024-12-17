@@ -50,8 +50,24 @@ export default function Profile() {
   // si esta todo mostramos el componente completo
   return (
     <section className="py-20 px-10">
-      <p className="text-2xl font-medium">{userData?.username}</p>
-      <i>Se unió el {userData?.createdAt.split("T")[0]}</i>
+      <div className="flex flex-col">
+        <div className="flex gap-3 items-center mb-5">
+          <img
+            className="rounded-full object-cover w-[50px] h-[50px]"
+            src={
+              userData?.profile_img
+                ? userData.profile_img
+                : "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png"
+            }
+            alt="Foto de perfil"
+          />
+          <p className="text-2xl font-medium">{userData?.username}</p>
+        </div>
+        <i>Se unió el {userData?.createdAt.split("T")[0]}</i>
+        <Link className="mt-2 text-blue-500" to="/my-tasks">
+          Mis tareas asignadas
+        </Link>
+      </div>
       <div className="pt-10">
         <h2 className="text-xl">Proyectos del usuario</h2>
         {ownerMode && (

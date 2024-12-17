@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema(
       unique: true,
       match: [/\S+@\S+\.\S+/, "El correo no es válido"], // validacion del formato
     },
+    profile_img: {
+      type: String,
+      required: false,
+    },
     password: {
       type: String,
       required: true,

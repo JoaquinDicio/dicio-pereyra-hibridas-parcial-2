@@ -27,7 +27,7 @@ export default function PrivateHeader() {
     }
 
     getCategories();
-  }, [axiosGet]);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 bg-slate-200 flex justify-between items-center px-5 py-3 w-full shadow-md z-10">

@@ -11,6 +11,9 @@ import EditProject from "./pages/EditProjects";
 import Contributors from "./pages/Contributors";
 import Project from "./pages/Project.jsx";
 import EditProfile from "./pages/EditProfile.jsx";
+import Tasks from "./pages/Tasks.jsx";
+import NewTask from "./pages/NewTask.jsx";
+import MyTasks from "./pages/MyTasks.jsx";
 
 function App() {
   return (
@@ -44,12 +47,24 @@ function App() {
                 element={<PrivateRoute Page={Contributors} />}
               />
               <Route
+                path="/admin-tasks/:projectID"
+                element={<PrivateRoute Page={Tasks} />}
+              />
+              <Route
                 path="/projects/:projectID"
                 element={<PrivateRoute Page={Project} />}
               />
               <Route
+                path="/add-task/:projectID"
+                element={<PrivateRoute Page={NewTask} />}
+              />
+              <Route
                 path="/profile/edit"
                 element={<PrivateRoute Page={EditProfile} />}
+              />
+              <Route
+                path="/my-tasks"
+                element={<PrivateRoute Page={MyTasks} />}
               />
             </>
           </Routes>

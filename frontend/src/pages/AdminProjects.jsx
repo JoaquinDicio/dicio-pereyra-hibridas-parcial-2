@@ -58,6 +58,12 @@ export default function AdminProjects() {
               </div>
               <div className="flex items-center space-x-3">
                 <Link
+                  to={`/admin-tasks/${project._id}`}
+                  className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+                >
+                  Tareas
+                </Link>
+                <Link
                   to={`/admin-contributors/${project._id}`}
                   className="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition"
                 >

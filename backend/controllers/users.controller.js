@@ -34,6 +34,16 @@ const usersController = {
       console.log("Error obteniendo los proyectos del usuario:", e);
     }
   },
+
+  async getTasksByUser(req, res) {
+    try {
+      const response = await usersService.getTasksByUser(req);
+      res.status(response.status).json(response);
+    } catch (e) {
+      console.log("Error obteniendo las tareas:", e);
+      res.status(500).json({ error: "Error obteniendo la tareas" });
+    }
+  },
 };
 
 export default usersController;

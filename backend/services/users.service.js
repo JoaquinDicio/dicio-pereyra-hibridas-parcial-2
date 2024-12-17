@@ -1,5 +1,6 @@
 import Project from "../models/Project.js";
 import User from "../models/User.js";
+import Task from "../models/Task.js";
 import mongoose from "mongoose";
 
 const usersService = {
@@ -111,6 +112,26 @@ const usersService = {
     const projects = await Project.find({ userId });
 
     return { status: 200, projects, owner: userExistence };
+  },
+
+  async getTasksByUser(req) {
+    try {
+      const userId = req.params.userId;
+      const tasks = await Task.find({ userId })
+        .populate("projectId", "name description")
+        .exec();
+
+      return {
+        status: 200,
+        data: tasks,
+      };
+    } catch (error) {
+      console.error("Error obteniendo tareas del usuario:", error);
+      return {
+        status: 500,
+        error: "Error obteniendo las tareas del usuario",
+      };
+    }
   },
 };
 
